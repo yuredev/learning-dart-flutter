@@ -26,8 +26,13 @@ main() {
   bool boleana = true;
   double flutuante = 23.5;
   // o tipo num aceita tudo
-  num aceitaTudo = 35;
-  aceitaTudo = 34.5;
+  num aceitaNumeros = 35;
+  aceitaNumeros = 34.5;
+
+  // o tipo dynamic aceita tudo assim como o JavaScript
+  dynamic aceitaTudo = 'Texto';
+  aceitaTudo = 353.32;
+  aceitaTudo = false;
 
   // para concatenar strings com numeros 
   // basta usar o método toString do numero

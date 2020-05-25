@@ -4,7 +4,7 @@ import 'dart:io';
 main() {
   // readFileSync aguarda a leitura do teclado
   // assim como scanf
-  String texto = stdin.readLineSync();
+  final String texto = stdin.readLineSync();
   print('valor digitado é ' +texto);
 
   // o readLineSync por lê strings 

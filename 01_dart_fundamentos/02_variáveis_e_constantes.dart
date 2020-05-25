@@ -13,6 +13,14 @@ main() {
   final gravidade = 9.8;
   // ambos os casos funcionam
 
+  // há também as constantes definidas por const
+  const constante = 24;
+
+  // a diferença entre a const e a final é que a const é em tempo de compilação e a final tempo de execução
+  // ou seja o valor de const é atribuído assim que o programa for executado
+  // o valor das finals é atribuído no momento que aquele código executar, ou seja, tempo de execução
+  // constantes só podem receber valores diretos ou valores de outras constantes 
+
   int numero = 50;
   String palavra = 'any word';
   bool boleana = true;

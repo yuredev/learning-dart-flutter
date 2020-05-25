@@ -1,6 +1,6 @@
 main() {
   // variáveis são tipadas assim como no C
-  int num = 70;
+  int number = 70;
 
   // print imprime na tela 
   print('hello world');
@@ -19,7 +19,7 @@ main() {
   }  
 
   // operador ternário
-  print(num > 50 ? 'maior que 50' : 'não é maior que 50');
+  print(number > 50 ? 'maior que 50' : 'não é maior que 50');
 
   // executando função
   printSoma(5,4);

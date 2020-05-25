@@ -25,6 +25,9 @@ main() {
   String palavra = 'any word';
   bool boleana = true;
   double flutuante = 23.5;
+  // o tipo num aceita tudo
+  num aceitaTudo = 35;
+  aceitaTudo = 34.5;
 
   // para concatenar strings com numeros 
   // basta usar o método toString do numero

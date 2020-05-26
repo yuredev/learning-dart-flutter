@@ -25,11 +25,11 @@ main() {
   String palavra = 'any word';
   bool boleana = true;
   double flutuante = 23.5;
-  // o tipo num aceita tudo
+  // o tipo num aceita todo tipo de número
   num aceitaNumeros = 35;
   aceitaNumeros = 34.5;
 
-  // o tipo dynamic aceita tudo assim como o JavaScript
+  // o tipo dynamic aceita tudo, e é uma tipagem fraca assim como as variáveis do JS
   dynamic aceitaTudo = 'Texto';
   aceitaTudo = 353.32;
   aceitaTudo = false;

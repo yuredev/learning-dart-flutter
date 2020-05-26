@@ -25,8 +25,9 @@ main() {
 
   // Maps
 
-  // object literals do js são Maps no Dart
-  // no Dart colocamos valores na chave podendo ser strings ou numeros 
+  // Maps são como vetores associativos
+  // parece com object literals do JavaScript, mas não são !!!
+  // colocamos valores na chave e podemos usar os valores com nomeDoMap[valor]
   Map jogo = {
     'Nome': 'Skyrim',
     'Categoria': 'RPG',

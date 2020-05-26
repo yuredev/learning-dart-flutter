@@ -18,7 +18,7 @@ main(List<String> args) {
   // por inferencia clone2 recebe uma função int 
   var clone2 = (int a, int b) {
     return a * b;
-  } 
+  };
 
   print('força: ${calcularForca(52, 100)} Newtons');
 

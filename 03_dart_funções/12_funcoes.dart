@@ -15,10 +15,22 @@ main(List<String> args) {
     return massa * aceleracao;
   };
 
-  // por inferencia clone2 recebe uma função int 
-  var clone2 = (int a, int b) {
+  // por inferencia func recebe uma função de retorno inteiro
+  var func = (int a, int b) {
     return a * b;
   };
+
+  // arrow function 
+  // em Dart só se usa a arrow em funções de linha única
+  var adicao = (int a, int b) => a+b; 
+
+  print('adicao de 34 + 6 = ${adicao(34, 6)}');
+
+  // a forma sem inferencia é
+  int Function(int, int) somar = (a,b) => a+b;
+
+
+  print('somar = ${somar(24, 6)}');
 
   print('força: ${calcularForca(52, 100)} Newtons');
 

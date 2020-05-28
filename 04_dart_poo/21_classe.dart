@@ -12,22 +12,44 @@ main(List<String> args) {
   // com ou sem ele o objeto é instanciado
   Data natal = Data(25, 12, 2020);
   print(natal);
+
+  Data anoNovo = Data.nomeado(dia: 1, mes: 1, ano: 2021);
+  Data vacinaCovid = Data.nomeado2();
+  print(vacinaCovid);
+  print(anoNovo);
 } 
 
 class Data {
   // atributos não tem encapsulamento
-
-  // construtor
-  Data([dia, mes, ano]){
-    this.dia = dia;
-    this.mes = mes;
-    this.ano = ano;
-  }
-
   int dia;
   int mes;
   int ano;
-  
+
+  // em Dart só é possível ter 1 construtor 
+  // construtor
+  // Data([dia, mes, ano]){
+  //   this.dia = dia;
+  //   this.mes = mes;
+  //   this.ano = ano;
+  // }
+
+  // a sintaxe à cima pode ser simplificada com 
+  Data([this.dia, this.mes, this.ano]); 
+
+  // construtor nomeado 
+  // é possível usar construtores alternativos e nomeados
+  Data.nomeado({this.dia, this.mes, this.ano});
+
+  // construtor nomeado 
+  // é possível usar construtores alternativos e nomeados
+  Data.nomeado2({this.dia = 16, this.mes = 8, this.ano = 2020});
+
+  // o this.ano no argumento, faz com que o this.ano = ano automaticamente
+  Data.ultimoDiaDoAno(this.ano) {
+    dia = 32;
+    mes = 12;
+  }
+
   @override
   String toString() {
     return '$dia/$mes/$ano';

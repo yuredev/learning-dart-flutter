@@ -20,10 +20,16 @@ main(List<String> args) {
 } 
 
 class Data {
-  // atributos não tem encapsulamento
+  // atributos de forma normal não tem encapsulamento
   int dia;
   int mes;
   int ano;
+  // pra deixálos privados seria necessário escrever 
+  // int _dia;
+  // int _mes;
+  // int _ano;
+  // isso faria com que esse atrubutos não fosse visíveis para
+  // arquivos externos
 
   // em Dart só é possível ter 1 construtor 
   // construtor

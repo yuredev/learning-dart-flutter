@@ -44,7 +44,7 @@ class Data {
   // é possível usar construtores alternativos e nomeados
   Data.nomeado2({this.dia = 16, this.mes = 8, this.ano = 2020});
 
-  // o this.ano no argumento, faz com que o this.ano = ano automaticamente
+  // o this.ano no argumento, faz com que: this.ano = ano automaticamente
   Data.ultimoDiaDoAno(this.ano) {
     dia = 32;
     mes = 12;

@@ -50,6 +50,17 @@ class Data {
   // é possível usar construtores alternativos e nomeados
   Data.nomeado2({this.dia = 16, this.mes = 8, this.ano = 2020});
 
+
+  // no Flutter tem um recurso adicional de utilizar construtores nomeados obrigatorios 
+  // usando o required
+  // é possível tambem usar valoes obrigatorios nomeados ex:
+  // Data.nomeadoObrigatorio({
+  //   @required this.dia, 
+  //   @required this.mes, 
+  //   @required this.ano
+  // });
+
+
   // o this.ano no argumento, faz com que: this.ano = ano automaticamente
   Data.ultimoDiaDoAno(this.ano) {
     dia = 32;

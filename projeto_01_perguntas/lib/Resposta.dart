@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Resposta extends StatelessWidget {
-  
   final String _texto; 
   final void Function() _onPressed;
 

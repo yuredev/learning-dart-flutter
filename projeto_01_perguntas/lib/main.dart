@@ -18,19 +18,35 @@ main() => runApp(PerguntaApp());
 // gerenciamento de estado
 class _PerguntaAppState extends State<PerguntaApp> {
   int _perguntaSelecionada = 0;
-  
+  double _pontuacaoTotal = 0;
+
   final List<Map<String, Object>> _perguntas = const [
     {
       'texto': 'Qual o seu game favorito?',
-      'respostas': ['Skyrim', 'The Witcher 3', 'Dark Souls 3', 'Red Dead Redemption 2']
+      'respostas': [
+        {'texto': 'Skyrim', 'pontuacao': 10.0}, 
+        {'texto': 'The Witcher 3', 'pontuacao': 4.5}, 
+        {'texto': 'Dark Souls 3', 'pontuacao': 4.5}, 
+        {'texto': 'Red Dead Redemption 2', 'pontuacao': 6.0}
+      ]
     },
     {
       'texto': 'Qual o seu anime favorito?',
-      'respostas': ['One Piece', 'Shingeki no Kyojin', 'Dragon Ball Z', 'One Punch Man']
+      'respostas': [
+        {'texto': 'One Piece', 'pontuacao': 10.0}, 
+        {'texto': 'Shingeki no Kyojin', 'pontuacao': 1.7}, 
+        {'texto': 'Dragon Ball Z', 'pontuacao': 1.0}, 
+        {'texto': 'One Punch Man', 'pontuacao': 0.0}
+      ]
     },
     {
       'texto': 'Qual o seu filme favorito?',
-      'respostas': ['LOTR', 'Cidade de Deus', 'Star Wars', 'Clube da Luta']
+      'respostas': [
+        {'texto': 'LOTR', 'pontuacao': 10.0}, 
+        {'texto': 'Cidade de Deus', 'pontuacao': 7.5}, 
+        {'texto': 'Star Wars', 'pontuacao': 0.5}, 
+        {'texto': 'Clube da Luta', 'pontuacao': 5.0}
+      ]
     },
   ];
 
@@ -38,16 +54,27 @@ class _PerguntaAppState extends State<PerguntaApp> {
     return _perguntaSelecionada < _perguntas.length;
   }
 
-  void _responder() {
+  void _resetar() {
+    this.setState(() {
+      _perguntaSelecionada = 0;
+      _pontuacaoTotal = 0;
+    });
+  }
+
+  void _responder(double pontuacao) {
     if (temPerguntaSelecionada) {
-      this.setState(() => _perguntaSelecionada++);
+      this.setState(() {
+        _perguntaSelecionada++;
+        _pontuacaoTotal += pontuacao;
+      });
     }
+    print(_pontuacaoTotal);
   }
   
   // o build deve ser repassado para o State uma vez que ele
   // depende do estado
   Widget build(BuildContext context) {
-    List<String> respostas = temPerguntaSelecionada ?
+    List<Map<String, Object>> respostas = temPerguntaSelecionada ?
       _perguntas[_perguntaSelecionada]['respostas'] :
       null;
 
@@ -59,7 +86,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
     // em Dart tem que colocar o != de nulo
     // não é suportado colocar diretamente a variável como no JS
     if (respostas != null) {
-      widgets = respostas.map((r) => Resposta(r, _responder)).toList();
+      widgets = respostas.map((r) => Resposta(r['texto'], () => _responder(r['pontuacao']))).toList();
     }
     
     return MaterialApp(
@@ -67,12 +94,12 @@ class _PerguntaAppState extends State<PerguntaApp> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepPurple[400],
-          title: Text('YureApp'),
+          title: Center(child: Text('YureApp'))
         ),
         // o body pode receber mais de um Widget
         body: temPerguntaSelecionada ? 
           Questionario(_perguntas[_perguntaSelecionada]['texto'], widgets) :
-          Resultado()
+          Resultado(_pontuacaoTotal, _resetar)
       )
     );
   }

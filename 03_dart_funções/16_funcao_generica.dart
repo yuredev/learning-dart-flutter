@@ -11,7 +11,7 @@ void main(List<String> args) {
   // e o primeiro parametro sejam listas de inteiro 
   // isso acontece pois esse map é uma funcao generica
   // que varia de acordo com o parametro enviado
-  List<int> newList = map(list, (item) => item);
+  List<int> newList = map(list, (item) => item * 2);
   
   print('lista de inteiros original: $list');
   print('lista de inteiros nova: $newList');
@@ -24,6 +24,15 @@ void main(List<String> args) {
 
   print('lista de strings original: $listStrings');
   print('lista de strings nova: $newListStrings');
+
+
+  var inverter = (bool item) {
+    return !item;
+  };
+
+  var listBoolean = [true, false, true];
+  var newListBool = map(listBoolean, inverter);
+  print(newListBool is List<bool>);
 }
 
 // essa implementação do map é genérica

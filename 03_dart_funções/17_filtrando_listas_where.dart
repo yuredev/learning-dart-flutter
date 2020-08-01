@@ -4,7 +4,8 @@ main(List<String> args) {
   // o filter do js é o where do Dart
   var notasBoas = notas.where((nota) => nota >= 7);
 
-  var notasMuitoBoas = notasBoas.where((nota) => false);
+  var notasMuitoBoas = notasBoas.where((nota) => nota >= 9);
 
   print(notasBoas);
+  print(notasMuitoBoas);
 }

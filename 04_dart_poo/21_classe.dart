@@ -63,8 +63,8 @@ class Data {
 
   // o this.ano no argumento, faz com que: this.ano = ano automaticamente
   Data.ultimoDiaDoAno(this.ano) {
-    dia = 32;
-    mes = 12;
+    this.dia = 31;
+    this.mes = 12;
   }
 
   @override

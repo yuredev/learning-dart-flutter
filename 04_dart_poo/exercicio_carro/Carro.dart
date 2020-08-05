@@ -1,7 +1,7 @@
 class Carro {
   int _velAtual;
   final int _velMaxima;
-    
+
   Carro(this._velMaxima) {
     _velAtual = 0;
   }
@@ -14,6 +14,7 @@ class Carro {
     }
     return _velAtual;
   }
+
   int frear() {
     if (_velAtual > 5) {
       _velAtual -= 5;
@@ -22,11 +23,12 @@ class Carro {
     }
     return _velAtual;
   }
+
   bool estaNoLimite() {
     return _velAtual == _velMaxima;
   }
 
-  // gets e sets 
+  // gets e sets
   // em sintaxes arrow e padrão
 
   int get velAtual {
@@ -38,7 +40,7 @@ class Carro {
   // void set velAtual(int velAtual) => _velAtual = velAtual;
 
   int valorAbsoluto(a, b) {
-    return (a-b).abs();
+    return (a - b).abs();
   }
 
   void set velAtual(int velAtual) {
@@ -49,7 +51,7 @@ class Carro {
     }
   }
 
-  // os métodos get e set são acessados como atributos 
+  // os métodos get e set são acessados como atributos
   // diferente do Java onde o método é chamado
 
   // quando há um 'set idade' por exemplo

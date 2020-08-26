@@ -34,6 +34,7 @@ class HomePageState extends State<StatefulWidget> {
             onPressed: () {
               setState(() {
                 CounterProvider.of(context).state.increment();
+                // context.dependOnInheritedWidgetOfExactType<CounterProvider>().state.increment();
               });
             },
           ),

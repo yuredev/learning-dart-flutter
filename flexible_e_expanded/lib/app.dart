@@ -27,7 +27,7 @@ class Home extends StatelessWidget {
         children: <Widget>[
           Container(
             height: 100,
-            child: Text('Item 1 - pretty big!'),
+            child: Text('Item 1'),
             color: Colors.red,
           ),
           Flexible(

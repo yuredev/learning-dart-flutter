@@ -49,7 +49,7 @@ class Note {
     return Note(
       id: jsonNote[NoteTableColumns.id] as int?,
       title: jsonNote[NoteTableColumns.title] as String,
-      createdTime: DateTime.parse([NoteTableColumns.time] as String),
+      createdTime: DateTime.parse(jsonNote[NoteTableColumns.time] as String),
       description: jsonNote[NoteTableColumns.description] as String,
       isImportant: (jsonNote[NoteTableColumns.isImportant] as int) == 0 ? false : true,
       number: jsonNote[NoteTableColumns.number] as int,

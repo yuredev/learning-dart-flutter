@@ -35,7 +35,7 @@ class NotesDatabase {
         ${NoteTableColumns.number} ${SQLTypes.integer},
         ${NoteTableColumns.title} ${SQLTypes.text},
         ${NoteTableColumns.description} ${SQLTypes.text},
-        ${NoteTableColumns.time} ${SQLTypes.text},
+        ${NoteTableColumns.time} ${SQLTypes.text}
       );
     ''');
   }
@@ -54,7 +54,7 @@ class NotesDatabase {
     return note.copy(id: id);
   }
 
-  Future<Note?> read(int id) async {
+  Future<Note?> get(int id) async {
     final db = await instance.database;
 
     final jsonNotes = await db.query(
@@ -78,7 +78,7 @@ class NotesDatabase {
     return null;
   }
 
-  Future<List<Note>> readAll() async {
+  Future<List<Note>> getAll() async {
     final db = await instance.database;
     final result = await db.query(
       noteTableName,

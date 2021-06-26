@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:sqfite_database/database/notes_database.dart';
 import 'package:sqfite_database/models/note.dart';
@@ -17,31 +19,30 @@ class _HomePageState extends State<HomePage> {
   String title = '';
   String description = '';
   DateTime? createdTime;
+  late final Future loadNotesFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    loadNotesFuture = refreshNotes();
+  }
 
   Future<void> refreshNotes() async {
-    print('aaaaaa');
     final loadedNotes = await NotesDatabase.instance.getAll();
     setState(() {
       notes.clear();
       notes.addAll(loadedNotes);
     });
+    return Future.value();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final notesForm = Form(
-      key: _formKey,
-      child: FutureBuilder(
-        future: refreshNotes(),
-        builder: (ctx, snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                'Ocorreu um erro ao buscar as notas do banco',
-              ),
-            );
-          }
-          return Padding(
+  void showNotesForm() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) {
+        return Form(
+          key: _formKey,
+          child: Padding(
             padding: const EdgeInsets.all(16),
             child: ListView(
               children: [
@@ -115,43 +116,62 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('SQFlite App'),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 4,
-        ),
-        itemCount: notes.length,
-        itemBuilder: (context, index) => Card(
-          elevation: 3,
-          child: ListTile(
-            leading: CircleAvatar(
-              child: Icon(Icons.note),
-              backgroundColor: Theme.of(context).primaryColor,
+      body: FutureBuilder(
+        future: loadNotesFuture,
+        builder: (ctx, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.error,
+                    color: Colors.red,
+                  ),
+                  Text('Something wrong happened'),
+                ],
+              ),
+            );
+          }
+          return ListView.builder(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8,
+              vertical: 4,
             ),
-            title: Text(notes[index].title),
-            subtitle: Text(notes[index].description),
-          ),
-        ),
+            itemCount: notes.length,
+            itemBuilder: (context, index) => Card(
+              elevation: 3,
+              child: ListTile(
+                leading: CircleAvatar(
+                  child: Icon(Icons.note),
+                  backgroundColor: Theme.of(context).primaryColor,
+                ),
+                title: Text(notes[index].title),
+                subtitle: Text(notes[index].description),
+              ),
+            ),
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (ctx) {
-              return notesForm;
-            },
-          );
-        },
+        onPressed: showNotesForm,
       ),
     );
   }

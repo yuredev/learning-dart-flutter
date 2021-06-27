@@ -1,0 +1,10 @@
+name: test_bloc
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies: 
+  bloc: 7.0.0
+

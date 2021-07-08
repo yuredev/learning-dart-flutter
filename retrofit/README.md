@@ -28,7 +28,17 @@ http do Dart
 
 O build runner fica ouvindo mudanças nos arquivos
 e cria classes necessárias automaticamente.\
-Se escrevermos uma interface e anotar os métodos, ele cria classes que implementam nossas interfaces
+Se escrevermos uma interface e anotar os métodos, ele cria classes que implementam nossas interfaces\
+Para usar o Build Runner é necessário deixar o seu processo no terminal executando
+
+```
+flutter pub run build_runner watch
+```
+
+Desta forma a medida que vamos salvando os arquivos
+ele vai gerando as classes necessárias
+
+
 
 ## Exemplos:
 
